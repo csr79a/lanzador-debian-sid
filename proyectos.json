@@ -3,6 +3,13 @@
   "acciones": [
     {
       "seccion": "Base",
+      "titulo": "Convertir Debian Testing a Sid",
+      "descripcion": "Cambia los repositorios oficiales de Debian Testing a Sid y prepara el sistema para la actualización.",
+      "repo": "https://github.com/csr79a/debian-sid-setup.git",
+      "script": "setup/convertir-testing-a-sid.sh"
+    },
+    {
+      "seccion": "Base",
       "titulo": "Configurar Debian Sid",
       "descripcion": "Setup inicial del sistema.",
       "repo": "https://github.com/csr79a/debian-sid-setup.git",
