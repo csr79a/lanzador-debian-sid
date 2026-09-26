@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Lanzador de scripts para Debian Sid: ventana de bienvenida (PyQt6).
+"""Centro de Control Debian Sid: ventana que reúne los scripts de
+configuración del sistema (PyQt6).
 
 Cada botón abre una terminal (Konsole) que clona o actualiza el repo del
 proyecto y ejecuta el script tal cual, así sudo, read y whiptail siguen
@@ -75,12 +76,13 @@ class Launcher(QWidget):
     def __init__(self, config):
         super().__init__()
         self.base = Path(os.path.expanduser(config["carpeta_proyectos"]))
-        self.setWindowTitle("Bienvenida · Debian Sid")
+        self.setWindowTitle("Centro de Control · Debian Sid")
         self.setMinimumSize(780, 600)
         self.resize(1000, 780)
 
-        titulo = QLabel("Debian Sid")
+        titulo = QLabel("Centro de Control Debian Sid")
         titulo.setObjectName("titulo")
+        titulo.setWordWrap(True)
         subtitulo = QLabel("Elige qué quieres configurar. Cada botón abre una "
                            "terminal, actualiza el proyecto desde GitHub y "
                            "ejecuta su script.")

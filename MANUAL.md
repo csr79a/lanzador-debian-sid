@@ -1,4 +1,6 @@
-# Manual de lanzador-debian-sid
+# Manual del Centro de Control Debian Sid
+
+_(repo: `lanzador-debian-sid`)_
 
 ## 1. Qué hace y qué no hace
 
@@ -37,7 +39,7 @@ Si `konsole` no está instalado avisa, pero no bloquea: el lanzador usará
 
 ### 2.2. Abrirlo
 
-Desde el menú de aplicaciones, buscando **Bienvenida Debian Sid**, o a mano:
+Desde el menú de aplicaciones, buscando **Centro de Control Debian Sid**, o a mano:
 
 ```bash
 python3 ~/lanzador-debian-sid/lanzador.py
@@ -118,6 +120,13 @@ campo `script`; mientras tanto la terminal dirá que el archivo no existe.
 - `sched-ext-debian` necesita un kernel **ya arrancado** con
   `CONFIG_SCHED_CLASS_EXT=y`, según el README de ese repo. Si no lo tienes,
   hay que compilar uno antes (`kernel-debian-builder`) y reiniciar con él.
+- "Instalar gestor de sched-ext (GUI)" necesita que "Instalar sched-ext" se
+  haya ejecutado antes (requiere `scxctl` en el `PATH` y
+  `scx_loader.service` activo). El lanzador no valida ese orden por ti:
+  si la pulsas primero, es probable que el script falle.
+- `nvidia-debian-setup` puede necesitar un paso manual después de reiniciar
+  si tienes Secure Boot activado (enrolar la clave MOK). Revisa la terminal
+  al terminar el script: te lo avisa ahí si aplica.
 - Las acciones de limpiar y desinstalar pueden eliminar paquetes y archivos.
   Además de la confirmación del lanzador, algunos scripts piden su propia
   confirmación (por ejemplo escribir `BORRAR`).

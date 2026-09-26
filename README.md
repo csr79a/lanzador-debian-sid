@@ -1,9 +1,10 @@
-# lanzador-debian-sid
+# Centro de Control Debian Sid
 
-Pantalla de bienvenida gráfica para **Debian Sid** que reúne mis scripts de
-configuración en una sola ventana. Cada botón abre una terminal, descarga o
-actualiza el proyecto desde GitHub y ejecuta su script tal cual, sin
-modificarlo.
+_(repo: `lanzador-debian-sid`)_
+
+Panel gráfico para **Debian Sid** que reúne mis scripts de configuración en
+una sola ventana. Cada botón abre una terminal, descarga o actualiza el
+proyecto desde GitHub y ejecuta su script tal cual, sin modificarlo.
 
 - Ventana hecha con **PyQt6**, con los colores de tu tema de Plasma (claro u oscuro).
 - Los scripts se ejecutan en **Konsole**, así que `sudo`, `read` y `whiptail`
@@ -28,8 +29,8 @@ cd ~/lanzador-debian-sid
 bash instalar-lanzador.sh
 ```
 
-Después busca **Bienvenida Debian Sid** en el menú de aplicaciones. También
-puedes abrirlo directamente:
+Después busca **Centro de Control Debian Sid** en el menú de aplicaciones.
+También puedes abrirlo directamente:
 
 ```bash
 python3 ~/lanzador-debian-sid/lanzador.py
@@ -41,7 +42,8 @@ python3 ~/lanzador-debian-sid/lanzador.py
 | --- | --- | --- |
 | Base | `debian-sid-setup` | Configurar / Limpiar Debian Sid |
 | Gaming | `setup-gaming-debian-sid` | Instalar / Limpiar gaming |
-| Rendimiento | `sched-ext-debian` | Instalar / Desinstalar sched-ext |
+| Rendimiento | `sched-ext-debian` | Instalar sched-ext / Instalar gestor de sched-ext (GUI) / Desinstalar sched-ext |
+| Gráficos NVIDIA | `nvidia-debian-setup` | Instalar driver NVIDIA |
 | Hardware ASUS | `asusctl-rogcontrol-debian` | Instalar / Desinstalar asusctl y ROG Control |
 | Terminal | `terminal-starship-setup` | Configurar terminal con Starship (versión Debian) |
 

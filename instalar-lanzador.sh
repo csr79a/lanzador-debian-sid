@@ -26,10 +26,10 @@ mkdir -p "$APPS"
 cat > "$APPS/lanzador-debian-sid.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Name=Bienvenida Debian Sid
-Comment=Lanzador de scripts de configuración
+Name=Centro de Control Debian Sid
+Comment=Configura, instala y limpia tu Debian Sid desde un solo panel
 Exec=python3 "$DIR/lanzador.py"
-Icon=utilities-terminal
+Icon=preferences-system
 Terminal=false
 Categories=System;Settings;
 EOF
@@ -37,4 +37,4 @@ EOF
 command -v update-desktop-database >/dev/null 2>&1 \
     && update-desktop-database "$APPS" || true
 
-echo "Listo: busca «Bienvenida Debian Sid» en el menú de aplicaciones."
+echo "Listo: busca «Centro de Control Debian Sid» en el menú de aplicaciones."
