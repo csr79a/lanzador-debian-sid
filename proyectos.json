@@ -40,11 +40,25 @@
     },
     {
       "seccion": "Rendimiento",
+      "titulo": "Instalar gestor de sched-ext (GUI)",
+      "descripcion": "App gráfica para elegir el scheduler sin terminal. Necesita sched-ext ya instalado.",
+      "repo": "https://github.com/csr79a/sched-ext-debian.git",
+      "script": "scx-manager-gui/install-scx-manager-gui.sh"
+    },
+    {
+      "seccion": "Rendimiento",
       "titulo": "Desinstalar sched-ext",
       "descripcion": "Quita sched-ext y sus herramientas.",
       "repo": "https://github.com/csr79a/sched-ext-debian.git",
       "script": "uninstall-sched-ext-debian.sh",
       "peligroso": true
+    },
+    {
+      "seccion": "Gráficos NVIDIA",
+      "titulo": "Instalar driver NVIDIA",
+      "descripcion": "Driver nvidia-open, GRUB para KMS y comprobación de Secure Boot.",
+      "repo": "https://github.com/csr79a/nvidia-debian-setup.git",
+      "script": "setup-nvidia-debian-sid.sh"
     },
     {
       "seccion": "Hardware ASUS",
