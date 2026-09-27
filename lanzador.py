@@ -47,7 +47,7 @@ QPushButton[peligroso="true"]:hover { background: #d64545; color: white; }
 # Script de bash fijo: recibe DIR, URL y SCRIPT como $1, $2 y $3 (sin
 # interpolar nada en el texto, para evitar problemas de quoting).
 BASH_RUNNER = r'''
-d=$1; url=$2; s=$3
+d=$1; url=$2; s=$3; sudo_req=$4
 pause() { echo; read -rp "Pulsa Enter para cerrar..." _; }
 if [ -d "$d/.git" ]; then
     git -C "$d" pull --ff-only || echo "AVISO: no se pudo actualizar; se usa la copia local."
@@ -55,7 +55,11 @@ else
     mkdir -p "$(dirname "$d")" && git clone "$url" "$d" || { echo "ERROR: no se pudo clonar $url"; pause; exit 1; }
 fi
 [ -f "$d/$s" ] || { echo "ERROR: no existe $s en $d"; pause; exit 1; }
-bash "$d/$s"; rc=$?
+if [ "$sudo_req" = "1" ]; then
+    sudo bash "$d/$s"; rc=$?
+else
+    bash "$d/$s"; rc=$?
+fi
 echo; echo "El script terminó con código $rc."
 pause
 '''
@@ -172,7 +176,8 @@ class Launcher(QWidget):
         dest = self.base / repo_name(item["repo"])
         subprocess.Popen(
             [terminal, "-e", "bash", "-c", BASH_RUNNER, "_",
-             str(dest), item["repo"], item["script"]],
+             str(dest), item["repo"], item["script"],
+             "1" if item.get("requiere_sudo") else "0"],
             start_new_session=True)
 
 

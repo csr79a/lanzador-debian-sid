@@ -103,6 +103,7 @@ git -C ~/lanzador-debian-sid pull --ff-only
 | `repo` | Sí | URL de clonado. La carpeta local se llama como el repo, sin `.git`. |
 | `script` | Sí | Ruta del script **dentro del repo**, relativa a su raíz. |
 | `peligroso` | No | Si es `true`, el botón sale con borde rojo y pide confirmación. |
+| `requiere_sudo` | No | Si es `true`, el script se ejecuta con `sudo bash` en lugar de `bash`. Solo para scripts que exigen root desde el principio (`EUID` global), no para los que piden `sudo` puntualmente por dentro. |
 
 ### Añadir un script nuevo
 
@@ -115,8 +116,11 @@ campo `script`; mientras tanto la terminal dirá que el archivo no existe.
 
 ## 6. Notas sobre los scripts incluidos
 
-- Todos se niegan a correr como root y piden `sudo` por dentro; por eso el
-  lanzador los ejecuta como usuario normal.
+- La mayoría se niegan a correr como root y piden `sudo` por dentro; el
+  lanzador los ejecuta como usuario normal. Los que necesitan root desde el
+  principio (por ejemplo `convertir-testing-a-sid.sh`, que reescribe
+  `/etc/apt/*` de principio a fin) llevan `"requiere_sudo": true` en
+  `proyectos.json`, y el lanzador antepone `sudo` a todo el script.
 - `sched-ext-debian` necesita un kernel **ya arrancado** con
   `CONFIG_SCHED_CLASS_EXT=y`, según el README de ese repo. Si no lo tienes,
   hay que compilar uno antes (`kernel-debian-builder`) y reiniciar con él.
