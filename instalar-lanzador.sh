@@ -19,7 +19,7 @@ if ((${#faltan[@]})); then
     exit 1
 fi
 command -v konsole >/dev/null 2>&1 \
-    || echo "AVISO: konsole no está instalado; se usará x-terminal-emulator si existe."
+    || echo "AVISO: konsole no está instalado; solo hará falta si algún script usa menús o listas (se usará x-terminal-emulator si existe)."
 
 APPS="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
 mkdir -p "$APPS"
